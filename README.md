@@ -1,33 +1,29 @@
 # Description
-This is houses the docker file that creates the image with all the necessary contents
-for the [LHC-DMWG April 2020 workshop](https://indico.cern.ch/event/900402/)
+Docker repository for dockermc.  
+Used for University of Freiburg Hadron Colliders lecture. 
 
 # Authors
- - Sam Meehan <samuel.meehan@cern.ch>
- - Matthew Feickert <matthew.feickert@cern.ch> (aka "The docker Guru")
-
+ - Spyros Argyropoulos <spyridon.argyropoulos@cern.ch>
+ Based on material from [LHC-DMWG April 2020 workshop](https://indico.cern.ch/event/900402/) by Sam Meehan and Matthew Feickert.
+ 
 # Quickstart
 The only requirement is [docker](https://www.docker.com/).  If you don't have this, refer to the bottom
 of this page. If you already have docker installed, then pull the image :
 ```
-docker pull gitlab-registry.cern.ch/meehan/docker-lhcdmwg-april2020
+docker pull sargyrop2/dockermc:latest
 ```
 and then prune it
 ```
 docker system prune
 ```
-you can then boot up the container
+
+Create a directory to hold the output of the event generation runs in the docker container:
 ```
-docker run --rm -it -v $PWD:$PWD gitlab-registry.cern.ch/meehan/docker-lhcdmwg-april2020:latest
+mkdir output && cd output
 ```
-you'll have the directory in which you executed that command (your $PWD) bind mounted 
-__inside the container's filesystem__ at the same path, however the 
-__default__ working directory you'll be dropped into in an interactive 
-session is `/home/data`. If you would like to change this so that you enter the 
-container filesystem at the same path that you are on at your local machine then 
-simply add the `-w` flag:
+Then run the container, mounting the `output` directory inside there:
 ```
-docker run --rm -it -v $PWD:$PWD -w $PWD gitlab-registry.cern.ch/meehan/docker-lhcdmwg-april2020:latest
+docker run --rm -it -v $PWD:/dockerMC/output dockermc:latest
 ```
 
 # Stuff Included Here
