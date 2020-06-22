@@ -3,10 +3,8 @@
 #include "TCanvas.h"
 #include <iomanip>
 
-// Function to calculate transverse momentum given an input 4-momentum
-float pt (const std::vector<double> & four_momentum) {
-    double px = four_momentum.at(0);
-    double py = four_momentum.at(1);
+// Function to calculate transverse momentum given px and py
+float pt (const double px, const double py) {
     return std::sqrt(std::pow(px,2)+std::pow(py,2));
 }
 
