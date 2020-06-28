@@ -168,6 +168,7 @@ RUN echo 'export PATH=/dockerMC/$MG5_DIRECTORY/bin:"${PATH}"' >> /root/.bashrc &
 WORKDIR /dockerMC
 
 COPY AnalysisMacros /dockerMC/AnalysisMacros
+COPY PythiaMacros /dockerMC/PythiaMacros
 
 COPY entrypoint.sh /dockerMC/entrypoint.sh
 RUN chmod 777 /dockerMC/entrypoint.sh
